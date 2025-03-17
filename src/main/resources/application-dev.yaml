@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: Lab4
+  datasource:
+    url: jdbc:postgresql://localhost:5432/scambank
+    username: postgres
+    password: 1337
+  jpa:
+    hibernate:
+      ddl-auto: create
+server:
+  port: 8080
+
+jwt:
+  access-token-expiration-date: 3600000
+  refresh-token-expiration-date: 86400000
+  key: "SorryZaZaderzhkiYaStaralsaSdelatGodnotuNoEstNedocheti"
