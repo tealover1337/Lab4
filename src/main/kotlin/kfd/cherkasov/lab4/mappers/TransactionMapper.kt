@@ -9,8 +9,8 @@ class TransactionMapper {
     fun entityToResponse(entity: Transaction): TransactionDataResponse {
         return TransactionDataResponse(
             userId = entity.userId,
-            pairId = entity.pairId,
-            currencyId = entity.currencyId,
+            currencyToSellId = entity.currencyToSellId,
+            currencyToBuyId = entity.currencyToBuyId,
             amount = entity.amount,
             isSuccessful = entity.isSuccessfull,
             happenedAt = entity.createdAt

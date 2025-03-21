@@ -23,9 +23,6 @@ class UserRole(
     @CreationTimestamp
     val createdAt: LocalDateTime = LocalDateTime.now()
 
-    enum class RoleType {
-        ROLE_USER,
-    }
 }
 
 @Component
@@ -36,5 +33,6 @@ class RoleInit(
     @Transactional
     fun initRoles() {
         roleDao.save(UserRole(name = "ROLE_USER"))
+        roleDao.save(UserRole(name = "ROLE_ADMIN"))
     }
 }

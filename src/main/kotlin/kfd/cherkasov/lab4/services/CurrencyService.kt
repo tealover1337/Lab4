@@ -25,8 +25,8 @@ class CurrencyService(
         val newCurrency = Currency(
             name = data.name,
             codeName = data.codeName)
-        newCurrency.setMarketValue(data.marketValue)
-        newCurrency.setBankAmount(data.bankAmount)
+        newCurrency.marketValue = data.marketValue
+        newCurrency.bankAmount = data.bankAmount
         currencyDao.save(newCurrency)
         return currencyMapper.entityToResponse(newCurrency)
     }
@@ -34,8 +34,8 @@ class CurrencyService(
     @Transactional
     fun updateCurrency(id: Int, data: UpdateCurrencyRequest): CurrencyDataResponse {
         val updatedCurrency = (currencyDao.findByIdOrNull(id) ?: throw EntityNotFoundException("No such currency")).let {
-            it.setMarketValue(data.newMarketValue)
-            it.setBankAmount(data.newBankAmount)
+            it.marketValue = data.newMarketValue
+            it.bankAmount = data.newBankAmount
         }
         return currencyMapper.entityToResponse(currencyDao.findByIdOrNull(id) ?: throw EntityNotFoundException("No such currenncy"))
     }
@@ -45,5 +45,8 @@ class CurrencyService(
         currencyDao.deleteById(id)
         return deletedCurrency
     }
-    //no D in CRUD because deleting currency will affect wallets and users and is unprofessional
+
+    fun findCurrencyByShortname(shortname: String): Currency {
+        return currencyDao.findCurrencyByCodeName(shortname)[0]
+    }
 }

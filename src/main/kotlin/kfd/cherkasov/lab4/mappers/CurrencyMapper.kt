@@ -10,8 +10,8 @@ class CurrencyMapper {
         return CurrencyDataResponse(
             name = currency.name,
             codeName = currency.codeName,
-            bankAmount = currency.getBankAmount(),
-            marketValue = currency.getMarketValue(),
+            bankAmount = currency.bankAmount,
+            marketValue = currency.marketValue,
             createdAt = currency.createdAt
         )
     }

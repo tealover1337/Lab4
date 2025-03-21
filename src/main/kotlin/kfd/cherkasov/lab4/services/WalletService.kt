@@ -43,4 +43,8 @@ class WalletService(
         walletDao.delete(deletedWallet)
         return walletMapper.entityToResponse(deletedWallet)
     }
+
+    fun getWalletByUserAndCurrency(userId: Long, currencyId: Int): Wallet {
+        return walletDao.findWalletByOwnerIdAndCurrencyId(userId, currencyId)[0]
+    }
 }

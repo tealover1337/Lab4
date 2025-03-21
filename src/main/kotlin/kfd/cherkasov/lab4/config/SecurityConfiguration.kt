@@ -21,6 +21,7 @@ class SecurityConfig(
             .authorizeHttpRequests {
                 it
                     .requestMatchers(HttpMethod.POST, "/auth/login", "/auth/refresh", "/auth/register").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/operations/**").hasRole("USER")
                     .requestMatchers("/users/**","/currencies/**","/transactions/**","/pairs/**","/wallets/**").hasRole("USER")
                     .anyRequest().authenticated()
             }

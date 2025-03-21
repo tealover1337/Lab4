@@ -21,8 +21,8 @@ class TransactionService (
     fun addTransaction(request: AddTransactionRequest): TransactionDataResponse {
         val newTransaction = Transaction(
             userId = request.userId,
-            pairId = request.pairId,
-            currencyId = request.currencyId,
+            currencyToSellId = request.currencyToSellId,
+            currencyToBuyId = request.currencyToBuyId,
             amount = request.amount,
             isSuccessfull = request.isSuccessful,
         )
