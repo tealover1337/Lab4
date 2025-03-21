@@ -15,16 +15,11 @@ class Currency(
 
 ) {
     @Column(name = "market_value", nullable = false)
-    private var marketValue: Long = 0L
+    var marketValue: Long = 0L
 
-    fun getMarketValue(): Long { return marketValue }
-    fun setMarketValue(newMarketValue: Long): Unit {this.marketValue = newMarketValue}
 
     @Column(name = "bank_amount", nullable = false)
-    private var bankAmount: Long = 0L
-
-    fun getBankAmount(): Long { return bankAmount }
-    fun setBankAmount(newBankAmount: Long): Unit {this.bankAmount = newBankAmount}
+    var bankAmount: Long = 0L
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -5,4 +5,8 @@ import org.springframework.data.repository.CrudRepository
 
 interface PairDao : CrudRepository<CurrencyPair, Int> {
     fun findCurrencyPairById(id: Int): MutableList<CurrencyPair>
+    fun getCurrencyPairByFirstCurrencyIdAndSecondCurrencyId(
+        firstCurrencyId: Int,
+        secondCurrencyId: Int
+    ): MutableList<CurrencyPair>
 }

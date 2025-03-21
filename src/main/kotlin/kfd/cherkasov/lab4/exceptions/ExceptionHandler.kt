@@ -42,4 +42,9 @@ class ExceptionHandler {
     fun sos(e: NullPointerException) = ResponseEntity
         .status(HttpStatus.NOT_FOUND)
         .body(e.cause)
+
+    @ExceptionHandler(IndexOutOfBoundsException::class)
+    fun lol(e: IndexOutOfBoundsException) = ResponseEntity
+        .status(HttpStatus.NOT_FOUND)
+        .body(e.cause)
 }

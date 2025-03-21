@@ -33,4 +33,8 @@ class PairService (
         pairDao.delete(deletedPair)
         return pairMapper.entityToResponse(deletedPair)
     }
+
+    fun getPairIdByCurrenciesId(firstId: Int, secondId: Int): Int {
+        return pairDao.getCurrencyPairByFirstCurrencyIdAndSecondCurrencyId(firstId, secondId)[0].id
+    }
 }
