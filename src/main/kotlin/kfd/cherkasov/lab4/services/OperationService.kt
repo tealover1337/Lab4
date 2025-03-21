@@ -26,8 +26,11 @@ class OperationService (
 
     // проверяю, существует ли валютная пара. выглядит убого, но пойдет
     fun pairCheck(firstCurrencyId: Int, secondCurrencyId: Int): Boolean {
-        try {pairService.getPairIdByCurrenciesId(firstCurrencyId, secondCurrencyId) or pairService.getPairIdByCurrenciesId(secondCurrencyId, firstCurrencyId)}
-        catch (e: IndexOutOfBoundsException) {return false}
+        try {pairService.getPairIdByCurrenciesId(firstCurrencyId, secondCurrencyId)}
+        catch (e: IndexOutOfBoundsException) {
+            try {pairService.getPairIdByCurrenciesId(secondCurrencyId, firstCurrencyId)}
+            catch (e: IndexOutOfBoundsException) {return false}
+        }
         return true
     }
     @Transactional
